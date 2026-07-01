@@ -7,7 +7,7 @@ from telegram.ext import (
 from telegram.constants import ChatMemberStatus
 
 TOKEN          = os.environ.get("BOT_TOKEN")
-FOTO_FILE_ID   = "AgACAgEAAxkBAAMyakOb4_hn_JgOCb0Gtm0MwI4gbRoAAmgMaxtzGRhGrwJAtAABhm02AQADAgADeQADPAQ"
+FOTO_FILE_ID   = "AgACAgEAAxkBAAMEakUgK-7KLgp_AzgW0cuDK-EJTKMAAnAMaxvkIDFG63IxMgouCr8BAAMCAAN5AAM8BA"
 
 TESTO_BENVENUTO_TEMPLATE = "{user_tag} this group is locked for new members because we value the privacy of our members. in order to see all content, you are required to share the group link to 1 group in 3 minutes."
 
