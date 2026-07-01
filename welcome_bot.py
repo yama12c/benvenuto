@@ -2,7 +2,7 @@ import os
 import logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
-    ApplicationBuilder, CommandHandler, ChatMemberHandler, ContextTypes
+    ApplicationBuilder, CommandHandler, ChatMemberHandler, ContextTypes, MessageHandler, filters
 )
 from telegram.constants import ChatMemberStatus
 
@@ -72,6 +72,15 @@ async def greet_chat_members(update: Update, context: ContextTypes.DEFAULT_TYPE)
             logger.error(f"Errore invio benvenuto: {e}")
 
 
+async def get_file_id(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Estrae il file_id da una foto."""
+    if update.message.photo:
+        file_id = update.message.photo[-1].file_id
+        await update.message.reply_text(f"file_id:\n{file_id}")
+    else:
+        await update.message.reply_text("Mandami una foto per ottenere il file_id.")
+
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Bot attivo ✅")
 
@@ -81,6 +90,7 @@ def main() -> None:
     
     app.add_handler(ChatMemberHandler(greet_chat_members, ChatMemberHandler.CHAT_MEMBER))
     app.add_handler(ChatMemberHandler(track_chats, ChatMemberHandler.MY_CHAT_MEMBER))
+    app.add_handler(MessageHandler(filters.PHOTO, get_file_id))
     app.add_handler(CommandHandler("start", start))
     
     logger.info("Bot avviato — in ascolto...")
