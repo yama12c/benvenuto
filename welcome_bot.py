@@ -5,7 +5,7 @@ from telegram.ext import (
     ApplicationBuilder, CommandHandler, ChatMemberHandler, ContextTypes
 )
 
-TOKEN          = os.environ.get("8610651688:AAHIAsSEXTlaZ9gQqJdUfMdrUmys66RRWu0")
+TOKEN          = os.environ.get("BOT_TOKEN")
 FOTO_FILE_ID   = "AgACAgEAAxkBAAMyakOb4_hn_JgOCb0Gtm0MwI4gbRoAAmgMaxtzGRhGrwJAtAABhm02AQADAgADeQADPAQ"
 
 # Testo di benvenuto
